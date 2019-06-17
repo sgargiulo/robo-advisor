@@ -1,10 +1,14 @@
 # app/robo_advisor.py
 
-import requests
+import csv
 import json
+import os
+import pandas
+
+import requests
 
 def to_usd(my_price):
-        return "${0:,.2f}".format(my_price) 
+    return "${0:,.2f}".format(my_price) 
 #
 # INFO INPUTS
 #
@@ -63,5 +67,24 @@ print("-------------------------")
 print("RECOMMENDATION: BUY!")
 print("RECOMMENDATION REASON: TODO")
 print("-------------------------")
+print("Writing Data to CSV")
+print("-------------------------")
 print("HAPPY INVESTING!")
 print("-------------------------")
+
+
+csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
+
+
+with open(csv_file_path, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
+    writer.writeheader() # uses fieldnames set above
+    writer.writerow({"city": "New York", "name": "Yankees"})
+    writer.writerow({"city": "New York", "name": "Mets"})
+    writer.writerow({"city": "Boston", "name": "Red Sox"})
+    writer.writerow({"city": "New Haven", "name": "Ravens"})
+
+
+
+## 58 minutes into video
+
