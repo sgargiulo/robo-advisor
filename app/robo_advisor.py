@@ -53,6 +53,33 @@ recent_low = min(low_prices)
 # INFO OUTPUT 
 #
 
+csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
+
+csv_headers = ["timestamp", "open", "high", "low", "close", "volume"]
+
+with open(csv_file_path, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames = csv_headers)
+    writer.writeheader() # uses fieldnames set above
+    writer.writerow({
+        "timestamp": "todo",
+        "open": "todo",
+        "high": "todo",
+        "low": "todo",
+        "close": "todo",
+        "volume": "todo",
+    })
+    writer.writerow({
+        "timestamp": "todo",
+        "open": "todo",
+        "high": "todo",
+        "low": "todo",
+        "close": "todo",
+        "volume": "todo",
+    })
+    
+
+
+
 print("-------------------------")
 print("SELECTED SYMBOL: XYZ")
 print("-------------------------")
@@ -67,22 +94,13 @@ print("-------------------------")
 print("RECOMMENDATION: BUY!")
 print("RECOMMENDATION REASON: TODO")
 print("-------------------------")
-print("Writing Data to CSV")
+print("Writing Data to: " + csv_file_path)
 print("-------------------------")
 print("HAPPY INVESTING!")
 print("-------------------------")
 
 
-csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
 
-
-with open(csv_file_path, "w") as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
-    writer.writeheader() # uses fieldnames set above
-    writer.writerow({"city": "New York", "name": "Yankees"})
-    writer.writerow({"city": "New York", "name": "Mets"})
-    writer.writerow({"city": "Boston", "name": "Red Sox"})
-    writer.writerow({"city": "New Haven", "name": "Ravens"})
 
 
 
