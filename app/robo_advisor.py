@@ -21,6 +21,12 @@ api_key = os.environ.get("ALPHAVANTAGE_API_KEY") #directs to env file to obtain 
 
 symbol = input("PLEASE ENTER STOCK SYMBOL (EX: AAPL) AND PRESS ENTER: ") #"MSFT"
 
+number =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+if str(number) in symbol:   #prevents HTML request for numberic entry
+    print("OH MAN....WE COULDN'T FIND ANY TRADING ACTIVITY FOR THAT SYMBOL. TRY AGAIN USING A VALID STOCK SYMBOL LIKE AAPL")
+    exit()
+
 request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}"
 
 response = requests.get(request_url)
@@ -29,7 +35,7 @@ parsed_response = json.loads(response.text)  #this turns string into dictionary
 
 #print(parsed_response)
 
-if "Error Message" in parsed_response:   #this validates stock symbol 
+if "Error Message" in parsed_response:   #this validates stock symbol is locted on url
     print("OH MAN....WE COULDN'T FIND ANY TRADING ACTIVITY FOR THAT SYMBOL. TRY AGAIN USING A VALID STOCK SYMBOL LIKE AAPL")
     exit()
 
