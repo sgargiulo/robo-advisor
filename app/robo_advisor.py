@@ -7,8 +7,10 @@ import pandas
 from dotenv import load_dotenv
 
 import requests
+import datetime
 
 load_dotenv() #> loads contents of the .env file into the script's environment
+
 
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price) 
@@ -83,14 +85,14 @@ with open(csv_file_path, "w") as csv_file:
             "volume": daily_prices["6. volume"],
         })
 
-
+now = datetime.datetime.now()
 
 
 print("-------------------------")
 print("SELECTED SYMBOL: " + symbol)
 print("-------------------------")
 print("REQUESTING STOCK MARKET DATA...")
-print("REQUEST AT: 2018-02-20 02:00pm")
+print("REQUEST AT: " + now.strftime("%Y-%m-%d %H:%M"))   #https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print(f"LATEST CLOSE: {to_usd(float(latest_close))}") 

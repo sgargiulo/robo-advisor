@@ -36,7 +36,7 @@ pip install -r requirements.txt
 pip install pandas
 ```
 
-# Setup Continued
+## Setup Continued
 
 Before using or developing this application, take a moment to [obtain an AlphaVantage API Key](https://www.alphavantage.co/support/#api-key) (e.g. "abc123").
 
