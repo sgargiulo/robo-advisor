@@ -54,7 +54,7 @@ Don't worry, the ".env" has already been [ignored](/.gitignore) from version con
 Run the recommendation script:
 
 ```py
-python robo_advisor.py
+python app/robo_advisor.py
 ```
 Enter stock symbol (ticker) and then hit enter 
 
