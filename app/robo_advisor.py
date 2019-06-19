@@ -94,6 +94,17 @@ with open(csv_file_path, "w") as csv_file:
 now = datetime.datetime.now()
 
 
+# TODO: stock recommentation 
+
+if float(latest_close) < .90 * float(recent_high) and float(latest_close) < .98 * float(tsd[latest_day]["2. high"]):
+    stock_recommendation = "BUY"
+    recommendation_reason = "Current Stock Price is less than 90 percent of recent high over the last 100 trading days and less than 98 percent of the current daily high"
+else: 
+    stock_recommendation = "DON'T BUY"
+    recommendation_reason = "Current Stock Price is greater than 90 percent of recent high over the last 100 trading days and/ or greater than 98 percent of the current daily high"
+
+
+
 print("-------------------------")
 print("SELECTED SYMBOL: " + symbol)
 print("-------------------------")
@@ -105,8 +116,8 @@ print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
 print(f"RECENT HIGH: {to_usd(float(recent_high))}")
 print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
-print("RECOMMENDATION: BUY!")
-print("RECOMMENDATION REASON: TODO")
+print("RECOMMENDATION: " + stock_recommendation)
+print("RECOMMENDATION REASON: " + recommendation_reason)
 print("-------------------------")
 print("Writing Data to: " + csv_file_path)
 print("-------------------------")
