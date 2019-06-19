@@ -11,12 +11,12 @@ import datetime
 
 load_dotenv() #> loads contents of the .env file into the script's environment
 
-
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price) 
 #
 # INFO INPUTS
 #
+
 api_key = os.environ.get("ALPHAVANTAGE_API_KEY") #directs to env file to obtain api key
 
 symbol = input("PLEASE ENTER STOCK SYMBOL (EX: AAPL) AND PRESS ENTER: ") #"MSFT"
@@ -32,8 +32,6 @@ request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJ
 response = requests.get(request_url)
 
 parsed_response = json.loads(response.text)  #this turns string into dictionary
-
-#print(parsed_response)
 
 if "Error Message" in parsed_response:   #this validates stock symbol is locted on url
     print("OH MAN....WE COULDN'T FIND ANY TRADING ACTIVITY FOR THAT SYMBOL. TRY AGAIN USING A VALID STOCK SYMBOL LIKE AAPL")
@@ -64,10 +62,6 @@ for date in dates:
 
 recent_high = max(high_prices)
 recent_low = min(low_prices)
-
-#breakpoint()
-
-
 
 #
 # INFO OUTPUT 
@@ -124,10 +118,4 @@ print("-------------------------")
 print("HAPPY INVESTING!")
 print("-------------------------")
 
-
-
-
-
-
-## 58 minutes into video
 
