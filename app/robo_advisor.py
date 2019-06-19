@@ -4,16 +4,23 @@ import csv
 import json
 import os
 import pandas
+from dotenv import load_dotenv
 
 import requests
+
+load_dotenv() #> loads contents of the .env file into the script's environment
+
 
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price) 
 #
 # INFO INPUTS
 #
+api_key = os.environ.get("ALPHAVANTAGE_API_KEY") #directs to env file to obtain api key
 
-request_url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=demo"
+symbol = "MSFT"
+
+request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}"
 
 response = requests.get(request_url)
 
